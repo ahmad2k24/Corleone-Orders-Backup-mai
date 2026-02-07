@@ -9,6 +9,7 @@ import os
 import logging
 import re
 from pathlib import Path
+import sys
 from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
 import uuid
@@ -20,10 +21,14 @@ import jwt
 from langdetect import detect, LangDetectException
 from deep_translator import GoogleTranslator
 
+ROOT_DIR = Path(__file__).resolve().parent
+# Ensure local packages take precedence over any installed "backend" package.
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 # Import inventory routes
 from backend.routes.inventory import router as inventory_router, init_inventory_routes
 
-ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # Create uploads directory
