@@ -21,7 +21,7 @@ from langdetect import detect, LangDetectException
 from deep_translator import GoogleTranslator
 
 # Import inventory routes
-from routes.inventory import router as inventory_router, init_inventory_routes
+from backend.routes.inventory import router as inventory_router, init_inventory_routes
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
