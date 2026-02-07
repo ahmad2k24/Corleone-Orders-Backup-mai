@@ -209,6 +209,11 @@ async def log_activity(
 
 # Create the main app
 app = FastAPI()
+
+# Basic health check
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
 api_router = APIRouter(prefix="/api")
 
 # Root-level health check for Kubernetes (must be at /health, not /api/health)

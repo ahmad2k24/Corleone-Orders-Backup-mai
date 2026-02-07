@@ -12,7 +12,7 @@ import io
 import base64
 import os
 
-from models.inventory import (
+from backend.models.inventory import (
     # Enums
     ItemCategory, UnitOfMeasure, BarcodeType, LocationType,
     TransactionType, SerialItemStatus, PickListStatus, PickItemStatus, AlertType,
