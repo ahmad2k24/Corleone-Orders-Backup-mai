@@ -221,6 +221,16 @@ api_router = APIRouter(prefix="/api")
 async def root_health_check():
     return {"status": "healthy"}
 
+# Silence default browser icon probes to avoid 404 noise in logs
+@app.get("/favicon.ico")
+async def favicon():
+    return Response(status_code=204)
+
+@app.get("/apple-touch-icon.png")
+@app.get("/apple-touch-icon-precomposed.png")
+async def apple_touch_icon():
+    return Response(status_code=204)
+
 # Department flow order
 DEPARTMENTS = [
     "received",
